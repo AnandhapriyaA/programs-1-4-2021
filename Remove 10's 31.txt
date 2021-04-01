@@ -1,0 +1,40 @@
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter int array");
+		int Array[] = new int[len];
+		for (int i = 0; i < len; i++)
+			Array[i] = scan.nextInt();
+		removeTens(Array);
+		scan.close();
+	}
+}
+class UserMainCode{
+	static int[] removeTens(int[] array) {
+		int k = 0;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != 10) {
+				list.add(array[i]);
+			}
+		}
+		if (list.size() < array.length) {
+			k = array.length - list.size();
+			for (int i = 0; i < k; i++) {
+				list.add(0);
+			}
+		}
+		int arr[] = new int[array.length];
+		for (int i = 0; i < array.length; i++) {
+			arr[i] = list.get(i);
+			System.out.println(arr[i]);
+		}
+		return arr;
+	}
+}
