@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter hashmap");
+		HashMap<Integer,Integer> map=new HashMap<>();
+		for(int i=0;i<len;i++) {
+			int key=scan.nextInt();
+			int value=scan.nextInt();
+			map.put(key,value);
+		}
+		getAverageOfOdd(map);
+		scan.close();
+	}
+}
+class UserMainCode{
+	static int getAverageOfOdd(HashMap<Integer,Integer> map) {
+		int sum=0,count=0;
+		for(Entry<Integer, Integer> m : map.entrySet()){ 
+			if(m.getKey()%2!=0) {
+				sum+=m.getValue();
+				count++;
+			}   
+		   } 
+		int result=sum/count;
+		 System.out.println(result); 
+		 return result;
+	}
+}
