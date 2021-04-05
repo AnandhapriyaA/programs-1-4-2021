@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter hashmap1");
+		HashMap<Integer, String> map1 = new HashMap<Integer, String>();
+		for (int i = 0; i < len; i++) {
+			int key = scan.nextInt();
+			String value = scan.next();
+			map1.put(key, value);
+		}
+		getMaxKeyValue(map1);
+		scan.close();
+	}
+}
+public class UserMainCode {
+	static String getMaxKeyValue(HashMap<Integer, String> map1) {
+		List<Integer> list = new ArrayList<>();
+		String result = "";
+		for (Entry<Integer, String> m : map1.entrySet()) {
+			list.add(m.getKey());
+		}
+		int max = Collections.max(list);
+		for (Entry<Integer, String> m : map1.entrySet()) {
+			if (max == m.getKey()) {
+				result = m.getValue();
+			}
+		}
+		System.out.println(result);
+		return result;
+	}
+}
