@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter number");
+		int number = scan.nextInt();
+		addSeries(number);
+		scan.close();
+	}
+}
+public class UserMainCode {
+	static int addSeries(int n) {
+		List<Integer> l1 = new ArrayList<Integer>();
+		for (int i = 1; i <= n; i++)
+			if (i % 2 != 0)
+				l1.add(i);
+		int n1 = l1.get(0);
+		for (int i = 1; i < l1.size(); i++) {
+			if (i % 2 != 0)
+				n1 = n1 + l1.get(i);
+			else
+				n1 = n1 - l1.get(i);
+		}
+		System.out.println(n1);
+		return n1;
+	}
+}
