@@ -1,0 +1,44 @@
+
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map.Entry;
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter hashmap1");
+		HashMap<Integer, Integer> map2 = new HashMap<Integer, Integer>();
+		HashMap<Integer, String> map1 = new HashMap<Integer, String>();
+		for (int i = 0; i < len; i++) {
+			int key = scan.nextInt();
+			String job = scan.next();
+			int value = scan.nextInt();
+			map1.put(key, job);
+			map2.put(key, value);
+
+		}
+		increaseSalaries(map1, map2);
+		scan.close();
+	}
+}
+public class UserMainCode {
+	static HashMap<Integer, Integer> increaseSalaries(HashMap<Integer, String> map1, HashMap<Integer, Integer> map2) {
+		HashMap<Integer, Integer> output = new HashMap<Integer, Integer>();
+		Integer result = 0;
+		for (Entry<Integer, String> m : map1.entrySet()) {
+			if (m.getValue().equals("manager")) {
+				result = m.getKey();
+			}
+		}
+		for (Entry<Integer, Integer> m : map2.entrySet()) {
+			if (result == m.getKey()) {
+				output.put(m.getKey(), m.getValue() + 5000);
+			}
+		}
+		for (Entry<Integer, Integer> m : output.entrySet()) {
+			System.out.println(m.getKey() + "\n" + m.getValue());
+		}
+		return output;
+	}
+}
